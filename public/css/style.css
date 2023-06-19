@@ -122,7 +122,7 @@ button {
   .personal_code_connecting_container {
     display: flex;
     flex-direction: column;
-    margin: 0 40px;
+    margin: 10 40px;
   }
   
   .personal_code_connecting_paragraph {

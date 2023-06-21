@@ -30,7 +30,6 @@ personalCodeCopyButton.addEventListener("click", () => {
   const personalCode = store.getState().socketId;
   navigator.clipboard && navigator.clipboard.writeText(personalCode);
 });
-
 // register event listeners for connection buttons
 
 const personalCodeChatButton = document.getElementById(
@@ -59,26 +58,26 @@ personalCodeVideoButton.addEventListener("click", () => {
   webRTCHandler.sendPreOffer(callType, calleePersonalCode);
 });
 
-const strangerChatButton = document.getElementById("stranger_chat_button");
-strangerChatButton.addEventListener("click", () => {
-  strangerUtils.getStrangerSocketIdAndConnect(constants.callType.CHAT_STRANGER);
-});
+// const strangerChatButton = document.getElementById("stranger_chat_button");
+// strangerChatButton.addEventListener("click", () => {
+//   strangerUtils.getStrangerSocketIdAndConnect(constants.callType.CHAT_STRANGER);
+// });
 
-const strangerVideoButton = document.getElementById("stranger_video_button");
-strangerVideoButton.addEventListener("click", () => {
-  strangerUtils.getStrangerSocketIdAndConnect(
-    constants.callType.VIDEO_STRANGER
-  );
-});
+// const strangerVideoButton = document.getElementById("stranger_video_button");
+// strangerVideoButton.addEventListener("click", () => {
+//   strangerUtils.getStrangerSocketIdAndConnect(
+//     constants.callType.VIDEO_STRANGER
+//   );
+// });
 
 // register event for allow connections from strangers
-const checkbox = document.getElementById("allow_strangers_checkbox");
-checkbox.addEventListener("click", () => {
-  const checkboxState = store.getState().allowConnectionsFromStrangers;
-  ui.updateStrangerCheckbox(!checkboxState);
-  store.setAllowConnectionsFromStrangers(!checkboxState);
-  strangerUtils.changeStrangerConnectionStatus(!checkboxState);
-});
+// const checkbox = document.getElementById("allow_strangers_checkbox");
+// checkbox.addEventListener("click", () => {
+//   const checkboxState = store.getState().allowConnectionsFromStrangers;
+//   ui.updateStrangerCheckbox(!checkboxState);
+//   store.setAllowConnectionsFromStrangers(!checkboxState);
+//   strangerUtils.changeStrangerConnectionStatus(!checkboxState);
+// });
 
 // event listeners for video call buttons
 
@@ -166,3 +165,28 @@ const hangUpChatButton = document.getElementById("finish_chat_call_button");
 hangUpChatButton.addEventListener("click", () => {
   webRTCHandler.handleHangUp();
 });
+document.onreadystatechange = function () {
+  if (document.readyState === "complete") {
+    var url_string = (window.location.href);
+    var url = new URL(url_string);
+    var PersonelCodeVal = url.searchParams.get("id");
+    var IsIframe= url.searchParams.get("IsIframe");
+    if(IsIframe=="true"){
+      document.getElementById('PersonalCodeConnecingInputDivId').style.display='none';
+      document.getElementById('PersonelCodeConnectingButtonsDivId').style.display='none';
+      document.getElementById('PersonalCodeValueDivId').style.display='block';
+      document.getElementById('MessengerContainerDivId').style.width=0;
+      document.getElementById('CallContainerDivId').style.width='100% !important';
+      document.getElementById('messages_container').style.width="120px";
+      
+    }else{
+      document.getElementById('PersonalCodeConnecingInputDivId').style.display='block';
+      document.getElementById('PersonelCodeConnectingButtonsDivId').style.display='block';
+      document.getElementById('PersonalCodeValueDivId').style.display='none';
+      document.getElementById('personal_code_input').value = PersonelCodeVal;
+      document.getElementById('MessengerContainerDivId').style.width='25% !important';
+      document.getElementById('CallContainerDivId').style.width='75% !important';
+      document.getElementById('messages_container').style.width="120px";
+    }
+  }
+};

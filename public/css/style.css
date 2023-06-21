@@ -38,6 +38,7 @@ button {
     display: flex;
     justify-content: center;
     align-items: center;
+    background: linear-gradient(168.68deg, #0052c9 1.12%, #0a91db 100%);
   }
   
   .dashboard_container {
@@ -51,7 +52,7 @@ button {
   }
   
   .call_container {
-    width: 50%;
+    width: 100%;
     height: 100%;
   }
   
@@ -104,6 +105,8 @@ button {
     justify-content: space-between;
     margin: 0 25px;
     align-items: center;
+    position: absolute;
+    bottom: 0px;
   }
   
   .personal_code_value_paragraph {
@@ -148,6 +151,21 @@ button {
     border: 1px solid rgba(255, 255, 255, 0.5);
     color: white;
     padding: 0 20px;
+  }
+
+  .personal_code_input2 {
+    width: 355px;
+    height: 100%;
+    background: rgba(196, 196, 196, 0.2);
+    background-filter: blur(80px);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    color: white;
+    padding: 0 20px;
+  }
+
+  .personal_code_input2:focus {
+    outline: none;
   }
   
   .personal_code_connecting_buttons_container {
@@ -238,6 +256,7 @@ button {
     flex-grow: 1;
     margin: 40px 30px;
     overflow-y: scroll;
+    width: 140px;
   }
   
   .message_left_container {
@@ -290,9 +309,9 @@ button {
   .videos_container {
     position: relative;
     height: calc(100% - 70px);
-    margin: 30px 40px 40px 40px;
+    /* margin: 30px 40px 40px 40px; */
     border-radius: 15px;
-    background: linear-gradient(168.68deg, #0052c9 1.12%, #0a91db 100%);
+    /* background: linear-gradient(168.68deg, #0052c9 1.12%, #0a91db 100%); */
     /* background-image: url('../utils/images/logo.png'); */
   }
   

@@ -5,7 +5,7 @@ export const updatePersonalCode = (personalCode) => {
   const personalCodeParagraph = document.getElementById(
     "personal_code_paragraph"
   );
-  personalCodeParagraph.innerHTML = personalCode;
+  personalCodeParagraph.value = personalCode;
 };
 
 export const updateLocalVideo = (stream) => {
@@ -24,7 +24,7 @@ export const showVideoCallButtons = () => {
   const strangerVideoButton = document.getElementById("stranger_video_button");
 
   showElement(personalCodeVideoButton);
-  showElement(strangerVideoButton);
+  //(strangerVideoButton);
 };
 
 export const updateRemoteVideo = (stream) => {
@@ -270,9 +270,9 @@ export const updateStrangerCheckbox = (allowConnections) => {
     "allow_strangers_checkbox_image"
   );
 
-  allowConnections
-    ? showElement(checkboxCheckImg)
-    : hideElement(checkboxCheckImg);
+  // allowConnections
+  //   ? showElement(checkboxCheckImg)
+  //   : hideElement(checkboxCheckImg);
 };
 
 // ui helper functions

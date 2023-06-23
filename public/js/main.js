@@ -5,7 +5,7 @@ import * as constants from "./constants.js";
 import * as ui from "./ui.js";
 import * as recordingUtils from "./recordingUtils.js";
 import * as strangerUtils from "./strangerUtils.js";
-
+ 
 const getTurnServerCredentials = async () => {
   const responseData = await axios.get('/api/get-turn-credentials');
   console.log(responseData.data.token.iceServers);
@@ -32,24 +32,29 @@ personalCodeCopyButton.addEventListener("click", () => {
 });
 // register event listeners for connection buttons
 
-const personalCodeChatButton = document.getElementById(
-  "personal_code_chat_button"
-);
+// const personalCodeChatButton = document.getElementById(
+//   "personal_code_chat_button"
+// );
 
 const personalCodeVideoButton = document.getElementById(
   "personal_code_video_button"
 );
 
-personalCodeChatButton.addEventListener("click", () => {
-  const calleePersonalCode = document.getElementById(
-    "personal_code_input"
-  ).value;
-  const callType = constants.callType.CHAT_PERSONAL_CODE;
+// const personalCodeAudioButton = document.getElementById(
+//   "personal_code_audio_button"
+// );
 
-  webRTCHandler.sendPreOffer(callType, calleePersonalCode);
-});
+// personalCodeChatButton.addEventListener("click", () => {
+//   const calleePersonalCode = document.getElementById(
+//     "personal_code_input"
+//   ).value;
+//   const callType = constants.callType.CHAT_PERSONAL_CODE;
+
+//   webRTCHandler.sendPreOffer(callType, calleePersonalCode);
+// });
 
 personalCodeVideoButton.addEventListener("click", () => {
+  IsAudio=true;
   const calleePersonalCode = document.getElementById(
     "personal_code_input"
   ).value;
@@ -57,6 +62,16 @@ personalCodeVideoButton.addEventListener("click", () => {
 
   webRTCHandler.sendPreOffer(callType, calleePersonalCode);
 });
+
+// personalCodeAudioButton.addEventListener("click", () => {
+//   IsAudio=false;
+//   const calleePersonalCode = document.getElementById(
+//     "personal_code_input"
+//   ).value;
+//   const callType = constants.callType.VIDEO_PERSONAL_CODE;
+
+//   webRTCHandler.sendPreOffer(callType, calleePersonalCode);
+// });
 
 // const strangerChatButton = document.getElementById("stranger_chat_button");
 // strangerChatButton.addEventListener("click", () => {
@@ -170,10 +185,10 @@ document.onreadystatechange = function () {
     var url_string = (window.location.href);
     var url = new URL(url_string);
     var PersonelCodeVal = url.searchParams.get("id");
-    var IsIframe= url.searchParams.get("IsIframe");
+      IsIframe= url.searchParams.get("IsIframe");
     if(IsIframe=="true"){
-      document.getElementById('PersonalCodeConnecingInputDivId').style.display='none';
-      document.getElementById('PersonelCodeConnectingButtonsDivId').style.display='none';
+      document.getElementById('PersonalCodeConnecingInputDivId').style.display='block';
+      document.getElementById('PersonelCodeConnectingButtonsDivId').style.display='block';
       document.getElementById('PersonalCodeValueDivId').style.display='block';
       document.getElementById('MessengerContainerDivId').style.width=0;
       document.getElementById('CallContainerDivId').style.width='100% !important';
@@ -182,7 +197,7 @@ document.onreadystatechange = function () {
     }else{
       document.getElementById('PersonalCodeConnecingInputDivId').style.display='block';
       document.getElementById('PersonelCodeConnectingButtonsDivId').style.display='block';
-      document.getElementById('PersonalCodeValueDivId').style.display='none';
+      document.getElementById('PersonalCodeValueDivId').style.display='block';
       document.getElementById('personal_code_input').value = PersonelCodeVal;
       document.getElementById('MessengerContainerDivId').style.width='25% !important';
       document.getElementById('CallContainerDivId').style.width='75% !important';

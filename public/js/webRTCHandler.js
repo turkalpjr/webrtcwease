@@ -15,7 +15,7 @@ export const setTURNServers = (servers) => {
 
 const defaultConstraints = {
   audio: true,
-  video: true,
+  video:  false,
 };
 
 // const configuration = {
@@ -358,7 +358,7 @@ const closePeerConnectionAndResetState = () => {
     connectedUserDetails.callType === constants.callType.VIDEO_PERSONAL_CODE ||
     connectedUserDetails.callType === constants.callType.VIDEO_STRANGER
   ) {
-    store.getState().localStream.getVideoTracks()[0].enabled = true;
+   // store.getState().localStream.getVideoTracks()[0].enabled = true;
     store.getState().localStream.getAudioTracks()[0].enabled = true;
   }
 

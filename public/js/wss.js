@@ -12,7 +12,11 @@ export const registerSocketEvents = (socket) => {
   socket.on("connect", () => {
     store.setSocketId(socket.id);
     let personalCodeWithUrl= "http://localhost:5000?id="+socket.id;
-    ui.updatePersonalCode(personalCodeWithUrl);
+    if(IsIframe!=undefined && IsIframe!=null && IsIframe=="true"){
+      ui.updatePersonalCode(personalCodeWithUrl);
+    }else{
+      ui.updatePersonalCode(socket.id);
+    }
   });
 
   socket.on("pre-offer", (data) => {

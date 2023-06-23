@@ -3,7 +3,7 @@ import * as elements from "./elements.js";
 
 export const updatePersonalCode = (personalCode) => {
   const personalCodeParagraph = document.getElementById(
-    "personal_code_paragraph"
+    "personal_code_inputid"
   );
   personalCodeParagraph.value = personalCode;
 };
@@ -99,7 +99,7 @@ export const showInfoDialog = (preOfferAnswer) => {
   if (preOfferAnswer === constants.preOfferAnswer.CALL_UNAVAILABLE) {
     infoDialog = elements.getInfoDialog(
       "Call is not possible",
-      "Probably callee is busy. Please try againg later"
+      "Probably callee is busy. Please try again later"
     );
   }
 
